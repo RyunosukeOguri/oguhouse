@@ -1,0 +1,279 @@
+ul{
+	margin: 0;
+}
+li{
+	list-style: none;
+}
+img {
+  border: 0;
+  max-width: 100%;
+  height: 100%;
+
+}
+
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  /*color: #2a6496;
+  text-decoration: underline;*/
+  opacity:0.7;
+}
+
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.i-left{
+	margin-right: 5px;
+}
+.i-right{
+	margin-left: 5px;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+/*///////-------------------////////
+// clearfix    | for modern brouser
+//////--------------------///////*/
+.clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: hidden;
+}
+.clearfix {
+        display: inline-block;
+}
+/* Hides from IE-mac \*/
+* html .clearfix {
+        height: 1%;
+}
+.clearfix {
+        display: block;
+}
+
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+
+}
+/*============*/
+/*	header    */
+/*============*/
+#header{
+	padding: 5px 15px;
+/*	background-color: #997743;
+	color: #FFF;
+*/	overflow: hidden;
+
+}
+.headerInner{
+	background-color: #5BBAD1;
+	overflow: hidden;
+}
+/*============*/
+/*	logo    */
+/*============*/
+.logo{
+	float: left;
+	width: 220px;
+	padding: 5px 10px;
+}
+.logo-title{
+	font-size: 26px;
+	font-weight: bold;
+	margin:0;
+}
+.pageTitle:before{
+	content:'| ';
+}
+
+
+/*============*/
+/*	nav       */
+/*============*/
+.nav-aritcle{
+	padding: 20px;
+}
+/*nav{
+	overflow: hidden;
+	padding: 15px 10px;
+}
+nav ul li{
+	float: left;
+	margin: 0 20px;
+}
+nav ul li a{
+	padding: 10px;
+	font-size:1.3em;
+	display: block;
+}*/
+.nav-header-auth{
+	float: right;
+}
+.nav-header-auth ul{
+	overflow: hidden;
+	padding: 15px 10px 0 0;
+}
+.nav-header-auth ul li{
+	float: left;
+}
+.nav-header-auth ul li a{
+	padding: 10px 20px;
+	display: block;
+	color: #333;
+}
+.nav-header-auth ul li a:hover{
+	border-radius: 5px;
+	background-color: #d7d7d7;
+	opacity:1;
+}
+/*============*/
+/*	見出しタグ */
+/*============*/
+h1 {
+  margin: 0.67em 0;
+  font-size: 2em;
+}
+
+/*============*/
+/*	container */
+/*============*/
+#container{
+	padding-top: 20px;
+}
+
+.top-img{
+	background-color: #249FAA;
+	color: #eee;
+}
+
+section{
+	padding: 10px;
+}
+section p{
+	font-size: 1.3em;
+	margin-bottom: 20px;
+
+}
+/*============*/
+/*	 blog   */
+/*============*/
+.col-blog-list{
+	border: 1px solid #fff;
+	-moz-transition-duration:0.5s;
+	-webkit-transition-duration:0.5s;
+	-o-transition-duration:0.5s;
+	-ms-transition-duration:0.5s;
+	margin: 15px;
+	height: 280px;
+	background-color: #FAFAFA;
+	position: relative;
+	opacity: 1;
+
+}
+.col-blog-list:hover{
+	border: 1px solid #5AC8FB;
+	background-color: #FFF;
+	opacity: 0.5;
+	-moz-transition-duration:1s;
+	-webkit-transition-duration:1s;
+	-o-transition-duration:1s;
+	-ms-transition-duration:1s;
+}
+.col-blog-list-btn{
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 10px;
+}
+.blog-tags{
+	margin-top: 20px;
+	font-size: 0.9em;
+	color: #947C52;
+}
+.blog-title a {
+  color: #2FB6C9;
+}
+.blog-text-title{
+	width: 650px;
+	height: 40px;
+	padding: 5px 5px;
+}
+.blog-text-area {
+	width: 650px;
+	height: 400px;
+	padding: 5px 5px;
+}
+
+/*============*/
+/*	 footer   */
+/*============*/
+#footer{
+	clear: both;
+	padding: 100px 15px 5px 15px;
+}
+.f-logo{
+	margin:50px auto 0;
+	padding: 10px 20px;
+	text-align: center;
+	color: #ccc;
+}
+.copyRight{
+	color: #eee;
+	padding: 20px 10px 5px 10px;
+	border-top: 1px solid #ccc;
+	text-align: right;
+}
+.copyRight a{
+	color: #fff;
+}
+
+/*============*/
+/* pagination  */
+/*============*/
+div.pagination {
+	font-size: 1.3em;
+	padding: 10px;
+	display: block;
+	text-align: center;
+	clear: both;
+}
+div.pagination span{
+
+}
+div.pagination span a{
+	padding: 5px 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+	margin: 3px;
+	color: #777;
+}
