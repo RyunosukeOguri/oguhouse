@@ -22,18 +22,13 @@
 		<span>WEB-CREATER BLOG</span>
 		</div>
 		<nav class="nav-header-auth">
-			<ul>
-			<li>
-				<?php if(Auth::check()): ?>
-				<?php foreach($anchors as $anchor): ?>
-								
-				<?php endforeach; ?>
-				<?php echo Html::anchor('articles/logout','<i class="fa fa-unlock i-left"></i>ログアウト'); ?>
-		 		<?php echo Html::anchor('articles/create','<i class="fa fa-pencil-square-o"></i>新規投稿');?>
-				<?php else: ?>
-				<?php echo Html::anchor('articles/login','<i class="fa fa-key i-left"></i>ログイン'); ?>
-				<?php endif; ?>
-			</li>
+			<ul>		
+			<?php if(Auth::check()): ?>
+			<li><?php echo Html::anchor('articles/logout','<i class="fa fa-unlock i-left"></i>ログアウト'); ?></li>
+			<li><?php echo Html::anchor('articles/create','<i class="fa fa-pencil-square-o"></i>新規投稿');?></li>
+			<?php else: ?>
+			<li><?php echo Html::anchor('articles/login','<i class="fa fa-key i-left"></i>ログイン'); ?></li>
+			<?php endif; ?>
 			</ul>
 		</nav>
 	</header>

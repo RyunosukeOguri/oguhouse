@@ -2,6 +2,7 @@
 
 class Model_Article extends \Orm\Model
 {
+
 	protected static $_properties = array(
 		'id',
 		'title' => array(
@@ -71,5 +72,38 @@ class Model_Article extends \Orm\Model
 		),
 	);
 	protected static $_table_name = 'articles';
+
+	//ページネーション
+	public static function pagination()
+	{
+
+		$response = array();
+
+		//ページネーションの設定
+		$count = Model_Article::count();
+		$config = array(
+			'uri_segment' => 2,
+			'num_links' => 5,
+			'per_page' => 4,
+			'total_items' => $count,
+				'template' => array(
+				'previous_mark' => 'previous',
+				'next_mark' => 'next',
+				'name' => 'pagination',
+			), 
+		);
+		$pagination = Pagination::forge('mypagination', $config);
+		$response['pagination'] = $pagination;
+		Pagination::set_config($config);
+
+		$response['articles'] = Model_Article::query()
+			->order_by('created_at', 'desc')
+			->order_by('id', 'desc')
+			->rows_offset(\Pagination::get('offset'))
+			->rows_limit(\Pagination::get('per_page'))
+			->get();
+
+		return $response;
+	}
 
 }

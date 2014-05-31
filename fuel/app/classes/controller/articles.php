@@ -2,7 +2,6 @@
 
 class Controller_Articles extends Controller_Example
 {
-	private $per_page = 4;
 
 	public function before()
 	{
@@ -18,49 +17,11 @@ class Controller_Articles extends Controller_Example
 
 	public function action_index()
 	{
-		//ビューに渡す配列の初期化
-		$data = array();
-
-		//ページネーションの設定
-		$count = Model_Article::count();
-		$config = array(
-			'pagination_url' => 'http://localhost.com/oguhouse/public/articles/',
-			'uri_segment' => 2,
-			'num_links' => 5,
-			'per_page' => $this->per_page,
-			'total_items' => $count,
-				'template' => array(
-				'wrapper_start' => '<div class="actions"> ',
-				'wrapper_end' => '</div>',
-				'active_start' => '<span class="active"> ',
-				'active_end' => '</span>',
-				'first_link' => '最初のページ',
-				'last_link' => '最後のページ',
-				'previous_start' => 'previous',
-				'previous_end' => 'next',
-				'previous_mark' => 'previous',
-				'next_mark' => 'next',
-				'name' => 'pagination',
-			), 
-		);
-		$pagination = Pagination::forge('mypagination', $config);
-		$data['pagination'] = $pagination;
-		Pagination::set_config($config);
-
-		// Pagination::set('per_page', 3);
-
-		//モデルから記事を取得
-		// 'mypagination' という名前の pagination インスタンスを作る
-//		$data['articles'] = Model_Article::find('all')
-		$data['articles'] = Model_Article::query()
-			->order_by('created_at', 'desc')
-			->order_by('id', 'desc')
-			->rows_offset(\Pagination::get('offset'))
-			->rows_limit(\Pagination::get('per_page'))
-			->get();
+		$aaa = Model_Article::pagination();
+		$data["articles"] = $aaa['articles'];
 
 		//ビューの読み込み
-		$data["subnav"] = array('index'=> 'active' );
+		$data["subnav"] = array('index'=> 'active');
 		$this->template->title = '記事一覧';
 		$this->template->content = View::forge('articles/index', $data);
 	}
