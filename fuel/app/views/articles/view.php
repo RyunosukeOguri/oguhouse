@@ -15,7 +15,9 @@
 		<?php endif; ?>
 		<hr>
 	</div>
+	<pre class="blog-text-area-view">
 	<?php echo $article->body; ?>
+	</pre>
 	<hr>
 	<?php if ($article->comments): ?>
 		<div class="offset1">
@@ -37,5 +39,5 @@
 	</div>
 </div>
 <ul class="nav nav-pills nav-aritcle">
-	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('articles/','<i class="fa fa-reply i-left"></i>戻る');?></li>
+	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('articles/','<i class="fa fa-reply i-left"></i>記事一覧へ');?></li>
 </ul>
