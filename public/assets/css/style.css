@@ -243,6 +243,19 @@ section p{
 }
 
 /*============*/
+/*	 sidebar   */
+/*============*/
+.panel-sns{
+	color: #fff;
+	background-color: #333;
+
+}
+.panel-daily{
+	color: #fff;
+	background-color: #ff0000;
+}
+
+/*============*/
 /*	 footer   */
 /*============*/
 #footer{

@@ -1,21 +1,23 @@
 <div class="sidebar-module">
+<div class="panel panel-info">
+		<div class="panel-heading">SNS</div>
+		<div class="panel-body">
+		<ol class="list-unstyled">
+		<li><a target="_blank" href="https://github.com/RyunosukeOguri">GitHub</a></li>
+		<li><a target="_blank" href="https://twitter.com/amagurik2">Twitter</a></li>
+		<li><a target="_blank" href="https://www.facebook.com/ryuunosuke.oguri">Facebook</a></li>
+		</ol>
+		</div>
+</div>
 
-	<ul class="nav nav-pills nav-aritcle">
-		<li><?php echo Html::anchor('articles/','記事一覧');?></li>
-	</ul>
-	<h4>SNS</h4>
-	<ol class="list-unstyled">
-	<li><a target="_blank" href="https://github.com/RyunosukeOguri">GitHub</a></li>
-	<li><a target="_blank" href="https://twitter.com/amagurik2">Twitter</a></li>
-	<li><a target="_blank" href="https://www.facebook.com/ryuunosuke.oguri">Facebook</a></li>
-	</ol>
-
-	<h4>Dairy -最近の記事-</h4>
+<div class="panel panel-warning">
+	<div class="panel-heading">Dairy -最近の記事-</div>
+	<div class="panel-body">
 	<ol class="list-unstyled">
 		<?php foreach ($articles as $article): ?>
 		<li>
 			<!-- 投稿者 日付 -->
-			<?php echo date("Y/m/d H:i:s", $article->created_at); ?><br>
+			更新日：<span style="color:#AFAFAF"><?php echo date("Y/m/d H:i:s", $article->created_at); ?></span>
 			<h2 class="blog-title">
 			<a href="<?php echo Uri::create('articles/view/' . $article->id); ?>">
 			<?php echo $article->title; ?>
@@ -37,4 +39,8 @@
 		</li>
 		<?php endforeach; ?>
 	</ol>
+	</div>
+</div>
+
+	
 	</div><!-- sidebar -->

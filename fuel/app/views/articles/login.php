@@ -1,7 +1,3 @@
-<ul class="nav nav-pills nav-aritcle">
-	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('articles/','記事一覧');?></li>
-</ul>
-
 <div class="row">
 	<div class="col-md-5">
 	<?php echo Form::open(array('role' => 'form')); ?>
@@ -24,6 +20,9 @@
 		</div>
 	</fieldset>
 	<?php echo Form::close(); ?>
+	<ul class="nav nav-pills nav-aritcle">
+	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('articles/','<i class="fa fa-reply i-left"></i>記事一覧へ');?></li>
+	</ul>
 	</div><!-- col-md-5 -->
 </div><!--row -->
 
