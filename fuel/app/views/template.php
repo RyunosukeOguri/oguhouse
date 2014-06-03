@@ -21,6 +21,13 @@
 		<p class="logo-title">OGU<i class="fa fa-home"></i>OUSE</p>
 		<span>WEB-CREATER BLOG</span>
 		</div>
+		<div class="nav-header-auth">
+			<a class="sns-btn-a" target="_blank" href="https://plus.google.com/u/0/115875078341552818583/posts"><i class="fa fa-google-plus-square fa-2x i-left google"></i></a>
+			<a class="sns-btn-a" target="_blank" href="https://github.com/RyunosukeOguri"><i class="fa fa-github fa-2x i-left git"></i></a>
+			<a class="sns-btn-a" target="_blank" href="https://twitter.com/amagurik2"><i class="fa fa-twitter-square fa-2x i-left twitter"></i></a>
+			<a class="sns-btn-a" target="_blank" href="https://www.facebook.com/ryuunosuke.oguri"><i class="fa fa-facebook-square fa-2x i-left facebook"></i></a>
+		</div>
+
 		<nav class="nav-header-auth">
 			<ul>		
 			<?php if(Auth::check()): ?>
@@ -52,10 +59,17 @@
 	 >>>> footer <<<<
 	/////////////////-->
 	<footer class="panel-footer" id="footer">
-		<p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
+	<div>
+		<ol>
+		<li class="sns-btn"><a target="_blank" href="https://plus.google.com/u/0/115875078341552818583/posts"><i class="fa fa-google-plus-square fa-2x i-left sns-icon"></i>Google+</a></li>
+		<li class="sns-btn"><a target="_blank" href="https://github.com/RyunosukeOguri"><i class="fa fa-github fa-2x i-left sns-icon"></i>GitHub</a></li>
+		<li class="sns-btn"><a target="_blank" href="https://twitter.com/amagurik2"><i class="fa fa-twitter-square fa-2x i-left sns-icon"></i>Twitter</a></li>
+		<li class="sns-btn"><a target="_blank" href="https://www.facebook.com/ryuunosuke.oguri"><i class="fa fa-facebook-square fa-2x i-left sns-icon"></i>Facebook</a></li>
+		</ol>
+	</div>
 		<p>
-			<a href="http://fuelphp.com">FuelPHP</a> is released under the MIT license.<br>
-			<small>Version: <?php echo e(Fuel::VERSION); ?></small>
+			<p class="copyRight">&copy;<a href="http://oguhouse.com/">oguhouse</a></p>
+			<small>Version: 1.7.0</small>
 		</p>
 	</footer>
 </body>

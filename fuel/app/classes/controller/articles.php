@@ -37,9 +37,12 @@ class Controller_Articles extends Controller_Example
 			Response::redirect('articles');
 		}
 
+		$response = Model_Comment::comment_obj($id);
+		$data["form"] = $response['form'];
+
 		$data["subnav"] = array('view'=> 'active' );
 		$this->template->title = $data['article']->title;
-		$this->template->content = View::forge('articles/view', $data);
+		$this->template->content = View::forge('articles/view', $data, false);
 	}
 	public function action_login()
 	{
@@ -147,5 +150,45 @@ class Controller_Articles extends Controller_Example
 		}
 			$this->template->title = '新規投稿';
 			$this->template->set('content', $form->build(), false);
+	}
+
+
+	public function action_edit($id = 0)
+	{
+
+		if($id)
+		{
+			$article = Model_Article::find($id);
+			if(!$article or $article->user_id != Arr::get(Auth::get_user_id(), 1))
+			{
+				Response::redirect('articles');
+			}
+		}
+		//Fieldsetにモデルを登録
+		$fieldset = Fieldset::forge()->add_model('Model_Article')->populate($article,true);
+
+		//フォーム要素の追加
+		$form = $fieldset->form();
+		//投稿ボタンの追加
+		$form->add('submit', '', array('type' => 'submit', 'value' => '更新', 'class' => 'btn btn-default btn-md'));
+
+		//Validationnの実行
+		if($fieldset->validation()->run())
+		{
+			//成功時
+			$fields = $fieldset->validated();
+			//Model_Articleのオブジェクトのプロパティ設定
+			$article->title = $fields['title'];
+			$article->body = $fields['body'];
+			$article->user_id = $fields['user_id'];
+
+			if($article->save())
+			{
+				Response::redirect('articles/view/' . $article->id);
+			}
+		}
+
+		$this->template->title = '編集';
+		$this->template->set('content', $form->build(), false);
 	}
 }
