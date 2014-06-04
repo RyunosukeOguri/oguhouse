@@ -52,6 +52,9 @@ img {
 	float: right;
 }
 
+.right a{
+	display: block;
+}
 /*============
 color scheam
 =============*/
