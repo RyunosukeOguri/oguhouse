@@ -10,21 +10,15 @@
 		</div>
 </div>
 
-<div class="panel panel-warning">
-<<<<<<< HEAD
+<div class="panel panel-black">
 	<div class="panel-heading"><i class="fa fa-book i-left"></i>Dairy -最近の記事-</div>
-=======
-	<div class="panel-heading">Dairy -最近の記事-</div>
->>>>>>> origin/master
 	<div class="panel-body">
 	<ol class="list-unstyled">
 		<?php foreach ($articles as $article): ?>
 		<li>
 			<!-- 投稿者 日付 -->
-<<<<<<< HEAD
 			<i class="fa fa-calendar i-left"></i><span style="color:#AFAFAF"><?php echo date("Y/m/d H:i:s", $article->created_at); ?></span><br>
 			<span class="blog-tags-side">
-=======
 			更新日：<span style="color:#AFAFAF"><?php echo date("Y/m/d H:i:s", $article->created_at); ?></span>
 			<h2 class="blog-title">
 			<a href="<?php echo Uri::create('articles/view/' . $article->id); ?>">
@@ -32,7 +26,6 @@
 			</a>
 			</h2>
 			<p class="blog-tags">
->>>>>>> origin/master
 			<!-- カテゴリー -->
 			<?php if ($article->categories): ?>
 			<span style="font-weight:bold"><i class="fa fa-tags i-left"></i></span>
@@ -55,10 +48,4 @@
 	</ol>
 	</div>
 </div>
-<<<<<<< HEAD
 </div><!-- sidebar -->
-=======
-
-	
-	</div><!-- sidebar -->
->>>>>>> origin/master
