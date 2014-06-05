@@ -39,6 +39,10 @@
 </div>
 <ul class="nav nav-pills nav-aritcle">
 	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('articles/','<i class="fa fa-reply i-left"></i>記事一覧へ');?></li>
+<<<<<<< HEAD
 </ul>
 
 <?php echo $form; ?>
+=======
+</ul>
+>>>>>>> origin/master

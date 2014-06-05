@@ -142,9 +142,12 @@ config/paginaiton.php
 ロリポップサーバー　mysqlぶちこむ
 
 
+<<<<<<< HEAD
 コメントモデル修正
 
 oil generate migration add_username_to_comments username:varchar[50]
 
 oil generate migration add_email_to_comments email:string
 
+=======
+>>>>>>> origin/master
