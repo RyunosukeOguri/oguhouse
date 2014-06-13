@@ -14,6 +14,8 @@ return array(
 				5 => '006_add_username_to_users',
 				6 => '007_add_last_login_to_users',
 				7 => '008_add_login_hash_to_users',
+				8 => '009_add_username_to_comments',
+				9 => '010_add_email_to_comments',
 			),
 		),
 		'module' => 

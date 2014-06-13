@@ -10,11 +10,6 @@ class Model_Comment extends \Orm\Model
 			'validation' => array('required','valid_string' => array(array('numeric'))),
 			'form' => array('type' => 'hidden'),
 		),
-		'user_id' => array(
-			'data_type' => 'int',
-			'validation' => array('required','valid_string' => array(array('numeric'))),
-			'form' => array('type' => 'hidden'),
-		),
 		'username' => array(
 			'data_type' => 'varchar',
 			'label' => 'お名前',
@@ -80,23 +75,44 @@ class Model_Comment extends \Orm\Model
 		//投稿ボタンの追加
 		$form->add('submit', '', array('type' => 'submit', 'value' => 'コメントする', 'class' => 'btn btn-default btn-md'));
 
+
 		//Validationの実行
-		if($fieldset->validation()->run())
+		// if($fieldset->validation()->run())
+		if(input::method() == 'POST')
 		{
+			echo 'method get_post';
+			$val = $fieldset->validation();
+			var_dump($val);
+			if($val->run()){
+				echo 'validation not';
+				$fields = $val->validated();
+				$comment->body = $fields['body'];
+				$comment->username = $fields['username'];
+				$comment->email = $fields['email'];
+				$comment->article_id = $fields['article_id'];
+				$comment->user_id = $fields['user_id'];
+
+				//$comment->set($fields);
+				if($comment->save())
+				{
+					Response::redirect('articles/view/' . $id);
+				}
+
+			}else{
+				echo 'validation not run';
+				$fieldset->repopulate();
+			}
 			//成功時
-			$fields = $fieldset->validated();
+			// $fields = $fieldset->validated();
 
 			//Model_Commentオブジェクトのプロパティ設定
-			$comment->body = $fields['body'];
-			$comment->username = $fields['username'];
-			$comment->email = $fields['email'];
-			$comment->article_id = $fields['article_id'];
+
 
 			//保存に成功したら元のページにリダイレクト
-			if($comment->save())
-			{
-				Response::redirect('articles/view/' . $id);
-			}
+			// if($comment->save())
+			// {
+			// 	Response::redirect('articles/view/' . $id);
+			// }
 		}
 				$response['form'] = $form->build();
 

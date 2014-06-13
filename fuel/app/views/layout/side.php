@@ -1,15 +1,4 @@
 <div class="sidebar-module">
-<div class="panel panel-info">
-		<div class="panel-heading">SNS</div>
-		<div class="panel-body">
-		<ol class="list-unstyled">
-		<li><a target="_blank" href="https://github.com/RyunosukeOguri">GitHub</a></li>
-		<li><a target="_blank" href="https://twitter.com/amagurik2">Twitter</a></li>
-		<li><a target="_blank" href="https://www.facebook.com/ryuunosuke.oguri">Facebook</a></li>
-		</ol>
-		</div>
-</div>
-
 <div class="panel panel-black">
 	<div class="panel-heading"><i class="fa fa-book i-left"></i>Dairy -最近の記事-</div>
 	<div class="panel-body">
@@ -17,14 +6,8 @@
 		<?php foreach ($articles as $article): ?>
 		<li>
 			<!-- 投稿者 日付 -->
-			<i class="fa fa-calendar i-left"></i><span style="color:#AFAFAF"><?php echo date("Y/m/d H:i:s", $article->created_at); ?></span><br>
+			<i class="fa fa-calendar i-left"></i><span style="color:#89DB21"><?php echo date("Y/m/d H:i:s", $article->created_at); ?></span><br>
 			<span class="blog-tags-side">
-			更新日：<span style="color:#AFAFAF"><?php echo date("Y/m/d H:i:s", $article->created_at); ?></span>
-			<h2 class="blog-title">
-			<a href="<?php echo Uri::create('articles/view/' . $article->id); ?>">
-			<?php echo $article->title; ?>
-			</a>
-			</h2>
 			<p class="blog-tags">
 			<!-- カテゴリー -->
 			<?php if ($article->categories): ?>
