@@ -68,7 +68,7 @@
 		</ol>
 	</div>
 		<p>
-			<p class="copyRight">&copy;<a href="http://oguhouse.com/">oguhouse</a></p>
+			<p class="copyRight">&copy;2014&nbsp;<a href="http://oguhouse.com/">oguhouse</a></p>
 			<small>Version: 1.7.0</small>
 		</p>
 	</footer>

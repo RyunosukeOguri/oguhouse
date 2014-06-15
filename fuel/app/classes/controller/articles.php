@@ -155,7 +155,6 @@ class Controller_Articles extends Controller_Example
 
 	public function action_edit($id = 0)
 	{
-
 		if($id)
 		{
 			$article = Model_Article::find($id);
@@ -178,6 +177,11 @@ class Controller_Articles extends Controller_Example
 			//成功時
 			$fields = $fieldset->validated();
 			//Model_Articleのオブジェクトのプロパティ設定
+			// $article = Model_Article::forge(array(
+			// 	"title" => Input::post("title"),
+			// 	"body" => Input::post("body"),
+			// 	"user_id" => Input::post("u")
+			// ));
 			$article->title = $fields['title'];
 			$article->body = $fields['body'];
 			$article->user_id = $fields['user_id'];
@@ -192,10 +196,10 @@ class Controller_Articles extends Controller_Example
 		$this->template->set('content', $form->build(), false);
 	}
 
-	public function action_category()
+	public function action_category($id = 0)
 	{
 		$data = array();
 		$this->template->title = 'カテゴリー別表示';
-		$this->template->content = View::forge('article/category', $data, false);
+		$this->template->content = View::forge('articles/category', $data, false);
 	}
 }

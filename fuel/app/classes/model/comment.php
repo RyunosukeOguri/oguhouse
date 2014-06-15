@@ -65,7 +65,7 @@ class Model_Comment extends \Orm\Model
 
 		//Model_commentオブジェクトの新規作成
 		$comment = Model_Comment::forge();
-//		$comment->user_id = Arr::get(Auth::get_user_id(), 1);
+		//$comment->user_id = Arr::get(Auth::get_user_id(), 1);
 
 		//Fieldsetオブジェクトにモデルを登録
 		$fieldset = Fieldset::forge()->add_model('Model_Comment')->populate($comment, true);
@@ -74,36 +74,21 @@ class Model_Comment extends \Orm\Model
 		//投稿ボタンの追加
 		$form->add('submit', '', array('type' => 'submit', 'value' => 'コメントする', 'class' => 'btn btn-default btn-md'));
 
-
 		//Validationの実行
-		// if($fieldset->validation()->run())
-		var_dump(input::post());
-
 		if(input::post()){
 			if($fieldset->validation()->run()){
 
-				$fields = $fieldset->validated();
-				$comment->article_id = $id;
-				$comment->body = $fields['body'];
-				$comment->username = $fields['username'];
-				$comment->email = $fields['email'];
-
-				// $new_comment = Model_Comment::forge(array(
-				// 	"body" => Input::post("body")
-				// ));
-
-				//$new_comment = new Model_Comment();
-
-				//$new_comment->save()
+				$comment = Model_Comment::forge(array(
+				  "article_id" => $id,
+				  "body" => Input::post("body"),
+				  "username" => Input::post("username"),
+				  "email" => Input::post("email")
+				));
 				
 				if($comment->save()){ Response::redirect('articles/view/' . $id); }
 
-			}else{
-				echo 'validation not run';
+			}else{ echo 'validation not run';}
 			//	$fieldset->repopulate();
-			}
-
-
 		}
 				$response['form'] = $form->build();
 
