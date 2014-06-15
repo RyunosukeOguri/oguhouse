@@ -74,7 +74,7 @@ class Model_Article extends \Orm\Model
 	protected static $_table_name = 'articles';
 
 	//ページネーション
-	public static function pagination()
+	public static function pagination($array)
 	{
 
 		$response = array();
@@ -103,7 +103,7 @@ class Model_Article extends \Orm\Model
 			->rows_limit(\Pagination::get('per_page'))
 			->get();
 
-		return $response;
+		return $response[$array];
 	}
 
 }

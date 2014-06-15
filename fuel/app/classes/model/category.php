@@ -23,7 +23,7 @@ class Model_Category extends \Orm\Model
 
   public static function category_obj()
 	{
-	  $data = array();
+	  $response = array();
 
 	  $category = Model_Category::find('all');
 
@@ -35,4 +35,30 @@ class Model_Category extends \Orm\Model
 
 	}
 
+	public static function category_init($array = "", $id = 0)
+	{
+		$response = array();
+		$category = Model_Category::find($id);
+		
+		//ページネーションの設定
+
+		$response = array(
+			"articles" => Model_Article::query()
+			->order_by('created_at', 'desc')
+			->order_by('id', 'desc')
+			->rows_offset(\Pagination::get('offset'))
+			->rows_limit(\Pagination::get('per_page'))
+			->get(),
+			"category" => $category->name
+		);
+
+		//$article = Model_Article::find();
+
+		// $response['category'] = Model_Article::query()
+		// 	->order_by('created_at', 'desc')
+		// 	->order_by('name', 'desc')
+		// 	->get();
+
+		return $response[$array];
+	}
 }

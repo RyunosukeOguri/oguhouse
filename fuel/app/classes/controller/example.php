@@ -57,7 +57,7 @@ abstract class Controller_Example extends Controller_Template
 
           $data['categories'] = Model_Category::category_obj();
 
-          var_dump($data['categories']);
+          // var_dump($data['categories']);
 
           return View::forge('layout/side', $data);
 

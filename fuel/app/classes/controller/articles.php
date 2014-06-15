@@ -17,9 +17,9 @@ class Controller_Articles extends Controller_Example
 
 	public function action_index()
 	{
-		$aaa = Model_Article::pagination();
-		$data["articles"] = $aaa['articles'];
-
+		$data = array(
+			"articles" => Model_Article::pagination("articles")
+		);
 		//ビューの読み込み
 		$data["subnav"] = array('index'=> 'active');
 		$this->template->title = '記事一覧';
@@ -192,9 +192,40 @@ class Controller_Articles extends Controller_Example
 	}
 
 	public function action_category($id = 0)
-	{
-		$data = array();
+	{	
+		echo $id;
+
+		$data = array(
+			"articles" => Model_Category::category_init('articles', $id),
+			"category_select" => Model_Category::category_init('category', $id)
+		);
+
 		$this->template->title = 'カテゴリー別表示';
 		$this->template->content = View::forge('articles/category', $data, false);
+	}
+	public function action_delete($id = 0)
+	{
+		$data = array();
+		if($id)
+		{
+			$article = Model_Article::find($id);
+		
+		}
+		//Fieldsetにモデルを登録
+		$fieldset = Fieldset::forge()->add_model('Model_Article')->populate($article,true);
+
+		//フォーム要素の追加
+		$form = $fieldset->form();
+		//投稿ボタンの追加
+		$form->add('submit', '', array('type' => 'submit', 'value' => '削除する', 'class' => 'btn btn-default btn-md'));
+
+		if(Input::post()){
+				$article = Model_Article::find($id);
+				if($article->delete()){
+						Response::redirect('articles');
+				}
+		}
+		$this->template->title = "記事の削除";
+		$this->template->set('content', $form->build(), false);
 	}
 }
