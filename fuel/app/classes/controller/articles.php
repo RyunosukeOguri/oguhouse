@@ -177,11 +177,6 @@ class Controller_Articles extends Controller_Example
 			//成功時
 			$fields = $fieldset->validated();
 			//Model_Articleのオブジェクトのプロパティ設定
-			// $article = Model_Article::forge(array(
-			// 	"title" => Input::post("title"),
-			// 	"body" => Input::post("body"),
-			// 	"user_id" => Input::post("u")
-			// ));
 			$article->title = $fields['title'];
 			$article->body = $fields['body'];
 			$article->user_id = $fields['user_id'];
