@@ -21,4 +21,18 @@ class Model_Category extends \Orm\Model
 	);
 	protected static $_table_name = 'categories';
 
+  public static function category_obj()
+	{
+	  $data = array();
+
+	  $category = Model_Category::find('all');
+
+	  foreach($category as $categories){
+	  	$response[$categories->id] = $categories->name;
+	  }
+
+	  return $response;
+
+	}
+
 }

@@ -55,10 +55,15 @@ abstract class Controller_Example extends Controller_Template
             ->rows_limit(3)
             ->get();
 
+          $data['categories'] = Model_Category::category_obj();
+
+          var_dump($data['categories']);
+
           return View::forge('layout/side', $data);
 
 
       }
+
   // }
 
   // *

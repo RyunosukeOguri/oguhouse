@@ -191,4 +191,11 @@ class Controller_Articles extends Controller_Example
 		$this->template->title = '編集';
 		$this->template->set('content', $form->build(), false);
 	}
+
+	public function action_category()
+	{
+		$data = array();
+		$this->template->title = 'カテゴリー別表示';
+		$this->template->content = View::forge('article/category', $data, false);
+	}
 }

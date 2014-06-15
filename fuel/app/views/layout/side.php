@@ -31,4 +31,12 @@
 	</ol>
 	</div>
 </div>
+<div class="panel panel-info">
+	<div class="panel-heading"><i class="fa fa-tags i-left"></i>カテゴリー</div>
+	<div class="panel-body">
+		<?php foreach ($categories as $key => $category): ?>
+		<a href="<?= Uri::create('article/category/' . $key); ?>"><?php echo $category; ?></a>
+		<?php endforeach; ?>
+	</div>
+</div>
 </div><!-- sidebar -->
