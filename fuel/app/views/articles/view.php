@@ -20,25 +20,20 @@
 	<hr>
 	<?php if ($article->comments): ?>
 		<div class="offset1">
-		<?php foreach ($article->comments as $comment): ?>
-		<div>
-			<div style="font-weight:bold">
-				<?php echo $comment->username; ?>さんのコメント
-			</div>
+			<?php foreach ($article->comments as $comment): ?>
 			<div>
-				<?php echo $comment->body; ?>
+				<p style="font-weight:bold"><?php echo $comment->username; ?>さんのコメント</p>
+				<p><?php echo $comment->body; ?></p>
+				<p>(<?php echo date("Y-m-d H:i:s", $comment->created_at); ?>)</p>
+				<hr>
 			</div>
-			<div>
-				(<?php echo date("Y-m-d H:i:s", $comment->created_at); ?>)
-			</div>
-			<hr>
+			<?php endforeach; ?>
 		</div>
-		<?php endforeach; ?>
-<?php endif; ?>
-	</div>
+	<?php endif; ?>
+	
 </div>
 <ul class="nav nav-pills nav-aritcle">
 	<li class='<?php echo Arr::get($subnav, "index" ); ?>'><?php echo Html::anchor('articles/','<i class="fa fa-reply i-left"></i>記事一覧へ');?></li>
 </ul>
-
 <?php echo $form; ?>
+</div>

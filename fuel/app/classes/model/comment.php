@@ -7,7 +7,7 @@ class Model_Comment extends \Orm\Model
 		'article_id' => array(
 			'data_type' => 'int',
 			'label' => '記事ID',
-			'validation' => array('required','valid_string' => array(array('numeric'))),
+			'validation' => array(),
 			'form' => array('type' => 'hidden'),
 		),
 		'username' => array(
@@ -66,7 +66,6 @@ class Model_Comment extends \Orm\Model
 		//Model_commentオブジェクトの新規作成
 		$comment = Model_Comment::forge();
 //		$comment->user_id = Arr::get(Auth::get_user_id(), 1);
-		$comment->article_id = $id;
 
 		//Fieldsetオブジェクトにモデルを登録
 		$fieldset = Fieldset::forge()->add_model('Model_Comment')->populate($comment, true);
@@ -78,41 +77,33 @@ class Model_Comment extends \Orm\Model
 
 		//Validationの実行
 		// if($fieldset->validation()->run())
-		if(input::method() == 'POST')
-		{
-			echo 'method get_post';
-			$val = $fieldset->validation();
-			var_dump($val);
-			if($val->run()){
-				echo 'validation not';
-				$fields = $val->validated();
+		var_dump(input::post());
+
+		if(input::post()){
+			if($fieldset->validation()->run()){
+
+				$fields = $fieldset->validated();
+				$comment->article_id = $id;
 				$comment->body = $fields['body'];
 				$comment->username = $fields['username'];
 				$comment->email = $fields['email'];
-				$comment->article_id = $fields['article_id'];
-				$comment->user_id = $fields['user_id'];
 
-				//$comment->set($fields);
-				if($comment->save())
-				{
-					Response::redirect('articles/view/' . $id);
-				}
+				// $new_comment = Model_Comment::forge(array(
+				// 	"body" => Input::post("body")
+				// ));
+
+				//$new_comment = new Model_Comment();
+
+				//$new_comment->save()
+				
+				if($comment->save()){ Response::redirect('articles/view/' . $id); }
 
 			}else{
 				echo 'validation not run';
-				$fieldset->repopulate();
+			//	$fieldset->repopulate();
 			}
-			//成功時
-			// $fields = $fieldset->validated();
-
-			//Model_Commentオブジェクトのプロパティ設定
 
 
-			//保存に成功したら元のページにリダイレクト
-			// if($comment->save())
-			// {
-			// 	Response::redirect('articles/view/' . $id);
-			// }
 		}
 				$response['form'] = $form->build();
 

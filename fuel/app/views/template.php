@@ -17,8 +17,7 @@
 	 >>>> header <<<<
 	/////////////////-->
 	<header class="navbar navbar-default navbar-static-top" id="header" role="navigation">
-<!-- 		<header class="blog-masthead" id="header">
- -->		<div class="logo">
+	<div class="logo">
 		<p class="logo-title">OGU<i class="fa fa-home"></i>OUSE</p>
 		<span>WEB-CREATER BLOG</span>
 		</div>

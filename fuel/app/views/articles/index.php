@@ -29,7 +29,6 @@
 	<div class="blog-body-substr">
 		<?php echo substr($article->body,0,130)."..."; ?>
 	</div>
-
 	<!-- コメント -->
 	<?php if ($article->comments): ?>
 		<br>
